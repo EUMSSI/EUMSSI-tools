@@ -12,9 +12,8 @@ Instructions
 
 ### Install Spotlight Annotator
 ```bash
-git clone https://github.com/jgrivolla/dbpedia-spotlight
+git clone https://github.com/dbpedia-spotlight/dbpedia-spotlight.git
 cd dbpedia-spotlight
-git checkout fix-uima-annotator
 cd uima
 mvn clean install
 ```
@@ -25,3 +24,4 @@ mvn clean install
 2. In eclipse, create new Java project from location `EUMSSI-tools/examples/dbpedia-pipeline`.
 3. Right click -> Configure... -> Convert to maven project
 3. Run `DbPediaPipeline` from Eclipse
+ 1. possibly remove dependency on ConceptMapper (needed for BasicPipeline, but not for DbPediaPipeline)
