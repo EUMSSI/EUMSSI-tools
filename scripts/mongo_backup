@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+fname=mongo-$(date --rfc-3339=date)
+if [ -e $fname ]; then
+  echo "backup $fname already exists"
+else
+  mongodump -d eumssi_db -o $fname && tar cvJf $fname.txz $fname && rm -r $fname
+fi
