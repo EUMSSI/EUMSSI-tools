@@ -19,11 +19,12 @@ import com.iai.uima.analysis_component.KeyPhraseAnnotator;
 
 public class KEAAnnotator {
 	
-	private static String lang;
-	private static float conf;
-	private static int ratio;
-	private static String target;
+	private static String lang = "en";
+	private static float conf = .5f;
+	private static int ratio = 75;
+	private static String target = "output/TypeSystem";
 	private static String source;
+	private static String endpoint = "http://10.10.10.125:2222/rest/annotate";
 	
 	private static void parseArgs(String [] args){
 		int i=0;
@@ -34,6 +35,7 @@ public class KEAAnnotator {
 					switch (current.charAt(1)) {
 						case 'l' : lang = args[++i]; break;
 						case 'i' : source = args[++i]; break;
+						case 'e' : endpoint = args[++i]; break;
 						case 'o' : target = args[++i]; break;
 						case 'c' : conf = Float.valueOf(args[++i]); break;
 						case 'r' : ratio = Integer.valueOf(args[++i]); break;
@@ -73,10 +75,10 @@ public class KEAAnnotator {
 				KeyPhraseAnnotator.PARAM_KEYPHRASE_RATIO,ratio);
 		
 		AnalysisEngineDescription dbp = createEngineDescription(SpotlightAnnotator.class,
-         		SpotlightAnnotator.PARAM_ENDPOINT, "http://10.10.10.125:2222/rest/annotate",
+         		SpotlightAnnotator.PARAM_ENDPOINT, endpoint,
          		SpotlightAnnotator.PARAM_CONFIDENCE,conf);
 		AnalysisEngineDescription ner = createEngineDescription(StanfordNamedEntityRecognizer.class,
-				StanfordNamedEntityRecognizer.PARAM_LANGUAGE,"en");
+				StanfordNamedEntityRecognizer.PARAM_LANGUAGE,lang);
 		
 		AnalysisEngineDescription type = createEngineDescription(
 				XmiWriter.class, XmiWriter.PARAM_TARGET_LOCATION,target);
