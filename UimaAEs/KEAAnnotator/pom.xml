@@ -5,17 +5,65 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>kea-pipeline</name>
   <build>
-    <sourceDirectory>src</sourceDirectory>
+    <sourceDirectory>src/main/java</sourceDirectory>
     <plugins>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.1</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>1.7</source>
+          <target>1.7</target>
         </configuration>
       </plugin>
-    </plugins>
+      <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-dependency-plugin</artifactId>
+    <version>2.5.1</version>
+    <executions>
+      <execution>
+        <id>copy-dependencies</id>
+        <phase>package</phase>
+        <goals>
+        <goal>copy-dependencies</goal>
+        </goals>
+        <configuration>
+        <outputDirectory>${project.build.directory}/lib/</outputDirectory>
+        </configuration>
+      </execution>
+    </executions>
+</plugin>
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <configuration>
+    <archive>
+        <manifest>
+        <addClasspath>true</addClasspath>
+        <classpathPrefix>lib/</classpathPrefix>
+        <mainClass>com.iai.scripts.keyphrases.KEAAnnotator</mainClass>
+        </manifest>
+    </archive>
+    </configuration>
+</plugin>
+    <plugin>
+      <artifactId>maven-assembly-plugin</artifactId>
+      <configuration>
+        <descriptorRefs>
+          <descriptorRef>jar-with-dependencies</descriptorRef>
+        </descriptorRefs>
+        <archive>
+        </archive>
+      </configuration>
+      <executions>
+        <execution>
+          <phase>package</phase>
+          <goals>
+            <goal>single</goal>
+          </goals>
+        </execution>
+      </executions>
+    </plugin>
+  </plugins>
   </build>
   <dependencies>
   	<dependency>
@@ -81,11 +129,6 @@
   		<version>1.5.0</version>
   	</dependency>
   	<dependency>
-  		<groupId>nz.ac.waikato.cms.weka</groupId>
-  		<artifactId>weka-stable</artifactId>
-  		<version>3.6.11</version>
-  	</dependency>
-  	<dependency>
   		<groupId>edu.stanford.nlp</groupId>
   		<artifactId>stanford-corenlp</artifactId>
   		<version>3.4.1</version>
@@ -118,10 +161,20 @@
   		<version>2.6.4</version>
   	</dependency>
   	<dependency>
-  		<groupId>weka</groupId>
-  		<artifactId>weka</artifactId>
-  		<version>3.7.3</version>
-  	</dependency>
+  	<groupId>com.feedzai.fos</groupId>
+  	<artifactId>fos-impl-weka</artifactId>
+  	<version>1.0.4</version>
+  </dependency>
+  <dependency>
+  	<groupId>weka</groupId>
+  	<artifactId>weka</artifactId>
+  	<version>3.7.3</version>
+  </dependency>
+  <dependency>
+  	<groupId>org.cleartk</groupId>
+  	<artifactId>cleartk-snowball</artifactId>
+  	<version>2.0.0</version>
+  </dependency>
   	<dependency>
   		<groupId>xerces</groupId>
   		<artifactId>xercesImpl</artifactId>
@@ -131,6 +184,21 @@
   		<groupId>com.github.fracpete</groupId>
   		<artifactId>snowball-stemmers-weka-package</artifactId>
   		<version>1.0.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.nzdl</groupId>
+  		<artifactId>kea</artifactId>
+  		<version>5.0</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.dbpedia.spotlight</groupId>
+  		<artifactId>uima</artifactId>
+  		<version>0.7</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.apache.uima</groupId>
+  		<artifactId>uimafit-cpe</artifactId>
+  		<version>2.1.0</version>
   	</dependency>
   </dependencies>
 </project>

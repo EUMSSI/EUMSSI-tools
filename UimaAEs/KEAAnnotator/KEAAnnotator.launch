@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/uima annotators/src/com/iai/scripts/keyphrases/KEAAnnotator.java"/>
+<listEntry value="/com.iai.uima.keyphraseannotator/src/main/java/com/iai/scripts/keyphrases/KEAAnnotator.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
 </listAttribute>
-<mapAttribute key="org.eclipse.debug.core.preferred_launchers">
-<mapEntry key="[debug]" value="org.eclipse.jdt.launching.localJavaApplication"/>
-</mapAttribute>
 <listAttribute key="org.eclipse.debug.ui.favoriteGroups">
 <listEntry value="org.eclipse.debug.ui.launchGroup.run"/>
 </listAttribute>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.eclipse.m2e.launchconfig.classpathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.iai.scripts.keyphrases.KEAAnnotator"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="uima annotators"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-i ../../examples/dbpedia-pipeline/input/Obama.txt -o output/TypeSystem -l en -r 100 -c .75"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="com.iai.uima.keyphraseannotator"/>
 <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.m2e.launchconfig.sourcepathProvider"/>
-<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xms2048M -Xmx2048M"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-DKEA_HOME=D:\merlin\GitHub\KEA"/>
 </launchConfiguration>

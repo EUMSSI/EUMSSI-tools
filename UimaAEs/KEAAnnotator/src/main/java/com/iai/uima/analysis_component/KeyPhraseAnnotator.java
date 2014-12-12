@@ -1,10 +1,12 @@
 package com.iai.uima.analysis_component;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import kea.main.KEAKeyphraseExtractor;
+import kea.main.KeyPhrase;
 import kea.stemmers.FrenchStemmer;
 import kea.stemmers.GermanStemmer;
 import kea.stemmers.PorterStemmer;
@@ -17,31 +19,31 @@ import kea.stopwords.StopwordsGerman;
 import kea.stopwords.StopwordsSpanish;
 
 import org.apache.uima.UimaContext;
-import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
+import org.apache.uima.fit.component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.fit.descriptor.ConfigurationParameter;
+import org.apache.uima.fit.util.JCasUtil;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 
 import com.iai.uima.jcas.tcas.KeyPhraseAnnotation;
 
+import de.tudarmstadt.ukp.dkpro.core.api.segmentation.type.Lemma;
+
 public class KeyPhraseAnnotator extends JCasAnnotator_ImplBase {
 
 	KEAKeyphraseExtractor ke = new KEAKeyphraseExtractor();
-	
+
 	private Pattern phrasePattern;
 	private static String KEA_HOME = System.getProperty("KEA_HOME");
-	
+
 	public static final String PARAM_LANGUAGE = "language";
-	@ConfigurationParameter(name=PARAM_LANGUAGE, defaultValue="en")
-	private String LANGUAGE ="en";
-	
-	public static final String PARAM_NUM_OF_KEYPHRASES = "numOfKeyPhrases";
-	@ConfigurationParameter(name=PARAM_NUM_OF_KEYPHRASES, defaultValue="10")
-	private int NUM_OF_KEYPHRASES = 10;
-	
-	private String modelName = KEA_HOME + "/data/models/"
-			+ LANGUAGE + "/model";
+	@ConfigurationParameter(name = PARAM_LANGUAGE, defaultValue = "en")
+	private String LANGUAGE;
+
+	public static final String PARAM_KEYPHRASE_RATIO = "ratioOfKeyPhrases";
+	@ConfigurationParameter(name = PARAM_KEYPHRASE_RATIO, defaultValue = "75")
+	private int KEAPHRASE_RATIO;
 
 	private Stemmer getStemmer(String lang) {
 		return lang.equals("es") ? new SpanishStemmer()
@@ -60,9 +62,8 @@ public class KeyPhraseAnnotator extends JCasAnnotator_ImplBase {
 	@Override
 	public void initialize(UimaContext aContext)
 			throws ResourceInitializationException {
-
-		modelName = KEA_HOME + "/data/models/" + LANGUAGE + "/model";
-
+		super.initialize(aContext);
+		
 		ke = new KEAKeyphraseExtractor();
 
 		// A. required arguments (no defaults):
@@ -73,10 +74,7 @@ public class KeyPhraseAnnotator extends JCasAnnotator_ImplBase {
 		// Note: keyphrases with the same name as documents, but extension "key"
 		// one keyphrase per line!
 
-		//ke.setDirName(KEA_HOME + "/testdocs/en/test");
-
-		// 2. Name of the model -- give the path to the model
-		ke.setModelName(modelName);
+		// ke.setDirName(KEA_HOME + "/testdocs/en/test");
 
 		// 3. Name of the vocabulary -- name of the file (without extension)
 		// that is stored in VOCABULARIES
@@ -100,16 +98,15 @@ public class KeyPhraseAnnotator extends JCasAnnotator_ImplBase {
 		// (We have obtained better results for Spanish and French with
 		// NoStemmer)
 		ke.setStemmer(getStemmer(LANGUAGE));
-		//ke.setStemmer(new NoStemmer());
+		// ke.setStemmer(new NoStemmer());
 		// 8. Stopwords
 		ke.setStopwords(getStopwords(LANGUAGE));
-
-		// 9. Number of Keyphrases to extract
-		ke.setNumPhrases(NUM_OF_KEYPHRASES);
 
 		// 10. Set to true, if you want to compute global dictionaries from the
 		// test collection
 		ke.setBuildGlobal(false);
+
+		ke.setModelName(KEA_HOME + "/data/models/" + LANGUAGE + "/model");
 
 		try {
 			ke.loadModel();
@@ -121,20 +118,33 @@ public class KeyPhraseAnnotator extends JCasAnnotator_ImplBase {
 	@Override
 	public void process(JCas aJCas) throws AnalysisEngineProcessException {
 
-		HashMap<String,HashMap<String,String>> keyPhrases = ke.extractKeyphrasesToMap(aJCas.getDocumentText());
-		for (String s : keyPhrases.keySet()) {
-			phrasePattern = Pattern.compile(s);
+		int numOfwords = aJCas.getDocumentText().split("[^\\s]").length;
+
+		ke.setNumPhrases(numOfwords / KEAPHRASE_RATIO);
+
+		ArrayList<KeyPhrase> keyPhrases = ke.extractKeyphrasesToList(aJCas
+				.getDocumentText());
+
+		for (KeyPhrase kp : keyPhrases) {
+			phrasePattern = Pattern.compile(kp.getUnstemmed());
 			Matcher matcher = phrasePattern.matcher(aJCas.getDocumentText());
-			System.out.println(s);
 			while (matcher.find()) {
-				KeyPhraseAnnotation annotation = new KeyPhraseAnnotation(aJCas);
-				annotation.setBegin(matcher.start());
-				annotation.setEnd(matcher.end());
-				annotation.setKeyPhrase(s);
-				annotation.setProbability(Double.valueOf(keyPhrases.get(s).get("probability")));
-				annotation.setStem(keyPhrases.get(s).get("stem"));
-				annotation.setRank(Integer.valueOf(keyPhrases.get(s).get("rank")));
-				annotation.addToIndexes();
+				List<Lemma> lemmata = JCasUtil.selectCovered(aJCas,
+						Lemma.class, matcher.start(), matcher.end());
+
+				if (lemmata.size() > 0) {
+					Lemma first = lemmata.get(0);
+					Lemma last = lemmata.get(lemmata.size() - 1);
+					KeyPhraseAnnotation annotation = new KeyPhraseAnnotation(
+							aJCas);
+					annotation.setBegin(first.getBegin());
+					annotation.setEnd(last.getEnd());
+					annotation.setKeyPhrase(kp.getUnstemmed());
+					annotation.setProbability(kp.getProbability());
+					annotation.setStem(kp.getStemmed());
+					annotation.setRank(kp.getRank());
+					annotation.addToIndexes();
+				}
 			}
 		}
 	}
