@@ -17,7 +17,7 @@ import de.tudarmstadt.ukp.dkpro.core.stanfordnlp.StanfordNamedEntityRecognizer;
 
 import com.iai.uima.analysis_component.KeyPhraseAnnotator;
 
-public class KEAAnnotator {
+public class KEAPipeline {
 	
 	private static String lang = "en";
 	private static float conf = .5f;
