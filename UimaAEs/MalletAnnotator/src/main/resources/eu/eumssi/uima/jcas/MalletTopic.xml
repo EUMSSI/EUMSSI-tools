@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<typeSystemDescription xmlns="http://uima.apache.org/resourceSpecifier">
+    <name>MalletTopic</name>
+    <description></description>
+    <version>1.0</version>
+    <vendor></vendor>
+
+      <types>
+        <typeDescription>
+          <name>eu.eumssi.uima.jcas.MalletTopicAnnotation</name>
+          <description/>
+          <supertypeName>uima.tcas.Annotation</supertypeName>
+          <features>
+            <featureDescription>
+              <name>topicDistribution</name>
+              <description/>
+              <rangeTypeName>uima.cas.DoubleArray</rangeTypeName>
+            </featureDescription>
+            <featureDescription>
+              <name>assignedTopicIndexes</name>
+              <description/>
+              <rangeTypeName>uima.cas.IntegerArray</rangeTypeName>
+            </featureDescription>
+            <featureDescription>
+              <name>assignedTopics</name>
+              <description/>
+              <rangeTypeName>uima.cas.StringArray</rangeTypeName>
+            </featureDescription>
+          </features>
+        </typeDescription>
+      </types>
+    
+</typeSystemDescription>
+
