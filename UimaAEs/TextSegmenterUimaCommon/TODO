@@ -1,0 +1,72 @@
+# UIMA Common
+# Copyright (C) 2010  Nicolas Hernandez
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.  
+#
+# TODO File
+# 2010-10-01  Nicolas Hernandez  <nicolas.hernandez@gmail.com>
+
+  * extract fr.univnantes.lina.uima.nlp into a new project
+  * method pour copier une annotation d'une vue à une autre : voir tmp, http://www.fabienpoulard.info/post/2011/06/05/Copier-une-annotation-d-une-vue-%C3%A0-une-autre-dans-UIMA
+  * FeatureUtils create methods to do that Return a feature anyAnnotation.getType().getFeatureByBaseName(featureName) or Return a string value anyAnnotation.getStringValue(anyAnnotation.getType().getFeatureByBaseName(featureName))  
+  * check the documentation (method headers, package names) http://code.google.com/p/uima-common/wiki/UserGuide?ts=1319862711&updated=UserGuide
+  *	 nettoyer la partie src/desc sur swap
+	* refactoring de JCasSofaView en autant de classes
+	* faire un createView non dédié à un sofaDataString ! Il y a un exemple dans ViewRenamerAE de uima-connectors
+	* to interface http://download.oracle.com/javase/tutorial/extra/certification/index.html
+    * rajouter le param boolean pour spécifier si filtrage positif ou négatif	public static ArrayList<FeatureStructure> getAnnotationArray(JCas aJCas, HashMap<String, Integer> annotationHashMap) throws AnalysisEngineProcessException {
+    * gestion des featurepath http://svn.apache.org/repos/asf/uima/sandbox/trunk/Tagger/src/main/java/org/apache/uima/examples/tagger/HMMModelTrainer.java voir la méthode initialize
+    * mettre en place un maven pour le déploiement auto du jar
+    * la javadoc et le jar ne sont pas uptodate
+	* mettre en place des tests de uimautilities en utilisant dans un premier temps les tests de uimafits http://code.google.com/p/uimafit/source/browse/trunk/uimaFIT-examples/src/main/java/org/uimafit/examples/ puis en les combinant avec des tests junit http://www.fabienpoulard.info/post/2010/03/16/Tests-unitaires-pour-UIMA-avec-UUTUC et maven
+    * suite à   * modification du comportement de process pour ne pas tenter de créer de vue lorsque celle ci correspond à une inputView ; désormais l'AE ne lance plus d'exception, au mieux un warning dans le stdout. Intérêt est que si on n'utilise pas l'outputAnnotation ni l'outputView il n'y ait pas d'echec du système du fait que l'inputView aura la même valeur que l'outputView .  
+    , répercuter changement dans description sur le wiki et sur README et example de uima shell
+	* développer public static Class retrieveAndCastAnAnnotation(FSIterator annotationToLineFSIterator, Annotation annotationToLine) 
+	* ordered UIMAUtilitiles.subiterator
+	  http://uima.apache.org/downloads/releaseDocs/2.3.0-incubating/docs/api/org/apache/uima/resource/metadata/TypePriorities.html	  
+	  * http://osdir.com/ml/apache.uima.general/2008-03/msg00030.html
+	  
+	  > is there a way to programmatically define type priorities?
+
+This in a CR which creates the CAS 
+I was advised to look at the UIMA test suite for things like this. I
+see that org.apache.uima.analysis_engine.impl.AnalysisEngine_implTest
+has the following code::
+
+TypePriorities typePriorities = new TypePriorities_impl();
+TypePriorityList priorityList = typePriorities.addPriorityList();
+priorityList.addType("Type1");
+priorityList.addType("Type2");
+desc.getAnalysisEngineMetaData().setTypePriorities(typePriorities);
+
+http://uima.apache.org/downloads/releaseDocs/2.3.0-incubating/docs/api/org/apache/uima/util/CasCreationUtils.html#setupTypePriorities(org.apache.uima.cas.admin.CASMgr, org.apache.uima.resource.metadata.TypePriorities)
+static void	setupTypePriorities(CASMgr aCASMgr, TypePriorities aTypePriorities) 
+          Adds TypePriorities to a CAS.
+
+Maybe that helps?
+	  * http://uima.apache.org/downloads/releaseDocs/2.3.0-incubating/docs/api/org/apache/uima/cas/FSIndex.html
+	  * http://uima.apache.org/downloads/releaseDocs/2.3.0-incubating/docs/api/org/apache/uima/cas/admin/FSIndexComparator.html
+	  * 2.4.1.6 Type priorities http://uima.apache.org/downloads/releaseDocs/2.3.0-incubating/docs/html/references/references.html#ugr.ref.xml.component_descriptor.aes.primitive
+	* ajouter la description de SubstituteAE  de ConcordancerAE et VariantRecognizerAE 
+    * uima.util.nlp: refactoring de ConcordancerAE et VariantRecognizerAE afin qu'ils étendent AnalysisEngineAE 
+	* modifier le code pour setter les feature runID et componentId
+	* gestion des couples nom annotation, nom feature avec feature path	notamment changer le couple PARAM_OUTPUT_ANNOTATION, PARAM_OUTPUT_FEATURE avec FEATUREPATH
+	* gestion des logs à la uima
+	* rajouter du code test e.g. http://code.google.com/p/uutuc/
+	* permettre la conversion d'encodage de l'input vers ce qui est passé en entrée du process et de la sortie du process vers ce qui est à sauvegarder 
+	

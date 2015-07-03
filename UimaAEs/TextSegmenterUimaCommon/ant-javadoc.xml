@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="protected" author="true" classpath="/media/MyPassport/current/public/research/UIMA-USER-DEV-ENV/applications/apache-uima/lib/uima-cpe.jar:/media/MyPassport/current/public/research/UIMA-USER-DEV-ENV/applications/apache-uima/lib/uima-tools.jar:/media/MyPassport/current/public/research/UIMA-USER-DEV-ENV/applications/apache-uima/lib/uima-document-annotation.jar:/media/MyPassport/current/public/research/UIMA-USER-DEV-ENV/applications/apache-uima/lib/uima-core.jar" destdir="/home/hernandez/Bureau/research/UIMA-USER-DEV-ENV/workspace/uima-common/target/javadoc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="fr.univnantes.lina.uima.util,fr.univnantes.lina.util" source="1.6" sourcepath="src" splitindex="true" use="true" version="true">
+            <link href="http://java.sun.com/javase/6/docs/api/"/>
+            <link href="file:/tmp/uima-common/javadoc/"/>
+        </javadoc>
+    </target>
+</project>

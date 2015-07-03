@@ -1,0 +1,45 @@
+# UIMA Common
+# Copyright (C) 2010, 2011  Nicolas Hernandez
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.  
+#
+# Install File
+# 2010-10-01  Nicolas Hernandez  <nicolas.hernandez@gmail.com>
+
+
+INSTALLATION & USE INSTRUCTIONS
+
+  * If you only want to use some of the generic methods you may consult 
+  the [http://uima-common.googlecode.com/svn/javadoc/index.html Javadoc] to 
+  see the utilities offered by the UIMAUtilities and JavaUtilities classes
+
+  * If you want to develop a generic AE, look at the 
+  [http://code.google.com/p/uima-common/wiki/UserGuide UserGuide] to learn more
+   on how to extend the `CommonAE`  class
+  
+  * In addition, you may consult the following examples which are extensions of 
+  the `CommonAE` class and which consequently use also the UIMA and Java Utilities.
+    * [http://code.google.com/p/uima-shell/source/browse/trunk/src/fr/univnantes/lina/uima/shell/ae/ShellAE.java ShellAE.java class] 
+    of the [http://code.google.com/p/uima-shell/ uima-shell AE] project. 
+    The descriptor examples illustrate various combination of generic parameters. 
+    The Java code illustrates the extension of the processAnnotationFeatureStringValue 
+    method and the use of parameters defined in the parent class.
+    * The various [https://code.google.com/p/uima-connectors UIMA Connectors AE classes]
+    * [https://code.google.com/p/uima-text-segmenter/source/browse/trunk/src/fr/univnantes/lina/uima/textSegmenter/TextSegmenterAE.java TextSegmenterAE.java] 
+    and its two sub extension classes, [https://code.google.com/p/uima-text-segmenter/source/browse/trunk/src/fr/univnantes/lina/uima/textSegmenter/C99/C99AE.java C99AE.java]  
+    and [https://code.google.com/p/uima-text-segmenter/source/browse/trunk/src/fr/univnantes/lina/uima/textSegmenter/JTextTile/JTextTileAE.java JTextTileAE.java].

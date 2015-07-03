@@ -1,0 +1,62 @@
+# UIMA Common
+# Copyright (C) 2010, 2011  Nicolas Hernandez
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+# 
+#   http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied.  See the License for the
+# specific language governing permissions and limitations
+# under the License.  
+#
+# Fichier README
+# 2010-10-01  Nicolas Hernandez  <nicolas.hernandez@gmail.com>
+
+
+OVERVIEW
+
+	The *uima-common* package aims at *assembling common and generic code 
+	snippets that can be usefully reused* in several distinct UIMA 
+	developments (like analysis engine or any application).
+
+	It is made of three parts 
+	  * an  `CommonAE` class which extends `JCasAnnotator_ImplBase`.
+	  * some UIMA Utilities 
+	  * and some Java Utilities 
+
+    *Why to use this package?*
+    * you want *to develop type system agnostic analysis engines* and so to *handle generically the views and the annotations* you process. This is made possible by specifying the names of the handled views and annotations by parameters;
+    * you want to *perform some process on some annotations* (also called _InputAnnotation_) *covered by some others* (also called _ContextAnnotation_) which are *only present in some views* (also called _InputView_);
+    * you want to *create a new view* (also called _OutputView_) *or a new annotation* (also called _OutputAnnotation_) *to receive the processing result and you want to set their name generically*;
+    * you want to handle  methods to get a view, an annotation type, a class, a feature, a feature getter method from their string name, to invoke an getter/setter method associated to a given annotation, or to create annotations from its name and feature name to set and views, or to subiterate with FeatureConstraints methods.
+
+
+FILES
+
+	ChangeLog	lists all the modifications which have been performed on the project  
+	INSTALL 	(should) contain all the instructions for installing and running the product 
+				(may have some examples)
+	LICENSE		describes  the right how to use the product 
+	NOTICE 		contains the acknowledgment and declares if required the licenses of 
+				the third-part dependencies
+	README		this current file 
+	TODO 		lists the future expected evolutions of the project 
+		
+		
+CONTACT
+
+	If you wish participate to the development of the project 
+	or if you find some bugs, please tell the discussion group.
+
+	Consult http://code.google.com/p/uima-common/ for more information.
+
+	Thanks for using this code.

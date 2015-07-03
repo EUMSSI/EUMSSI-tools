@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jardesc>
+    <jar path="uima-common/target/uima-common-v120111.jar"/>
+    <options buildIfNeeded="true" compress="true" descriptionLocation="/uima-common/packaging-uima-common.jardesc" exportErrors="true" exportWarnings="true" includeDirectoryEntries="true" overwrite="false" saveDescription="true" storeRefactorings="false" useSourceFolders="false"/>
+    <storedRefactorings deprecationInfo="true" structuralOnly="false"/>
+    <selectedProjects/>
+    <manifest generateManifest="true" manifestLocation="" manifestVersion="1.0" reuseManifest="false" saveManifest="false" usesManifest="true">
+        <sealing sealJar="false">
+            <packagesToSeal/>
+            <packagesToUnSeal/>
+        </sealing>
+    </manifest>
+    <selectedElements exportClassFiles="true" exportJavaFiles="true" exportOutputFolder="false">
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.nlp{ConcordancerAE.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.common{DocumentAnnotationUtils.java"/>
+        <file path="/uima-common/.project"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Location_Type.java"/>
+        <file path="/uima-common/NOTICE"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.resources{DictionaryResource.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.dataModels{PrefixTree.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Annotation.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Title_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Annotation.java"/>
+        <file path="/uima-common/README"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.rs{ReportedSpeechDiscourse_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Token_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.common{JCasSofaViewUtils.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.common{FeatureUtils.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.common{UIMAUtils.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.common{AnnotationIndexCleanerAE.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.rs{ReportedSpeech.java"/>
+        <file path="/uima-common/desc/common/NullProcessAE.xml"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.resource{RegexEntry.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Date_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.common{CommonAE.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{LexicalUnit.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Work_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{LexicalUnit_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Amount_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Organization_Type.java"/>
+        <file path="/uima-common/desc/common/nlp/ConcordancerAE.xml"/>
+        <file path="/uima-common/ant-javadoc.xml"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Title.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{NamedEntity_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.dataModels{PrefixTree_Impl.java"/>
+        <file path="/uima-common/LICENSE"/>
+        <file path="/uima-common/desc/common/types/commonTS.xml"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.common{AnnotationCollectionUtils.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.rs{ReportedSpeech_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Person_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.resource{DictEntry.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Annotation_Type.java"/>
+        <file path="/uima-common/desc/common/CommonAE.xml"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Organization.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.common{ResourceUtils.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Subtitle_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Subtitle.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.resource{RegexEntry_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.resource{DictEntry_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Token.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{DiscourseSegment.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.resources{RelevantRetrievedCorrectCounterResource_interface.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Sentence.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Chunk_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Header.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Time_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.rs{ReportedSpeechSegment_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.rs{ReportedSpeechSegment.java"/>
+        <file path="/uima-common/TODO"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Event.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Annotation_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Header_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.rs{ReportedSpeechDiscourse.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Person.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.resources{RelevantRetrievedCorrectCounterResource.java"/>
+        <file path="/uima-common/.settings/org.eclipse.jdt.core.prefs"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.rs{ReportedSpeechSource_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Paragraph.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Paragraph_Type.java"/>
+        <file path="/uima-common/packaging-uima-common.jardesc"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Time.java"/>
+        <file path="/uima-common/ChangeLog"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.nlp{RegexSubstituteAE.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.resources{CSVDictionaryResource.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.nlp{InformationRetrievalEvaluatorAE.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Sentence_Type.java"/>
+        <file path="/uima-common/desc/common/nlp/RegexSubstituteAE.xml"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Amount.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.resources{RelevantRetrievedCorrectCounter.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{DiscourseSegment_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Work.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Date.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.java.util{JavaUtilities.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.text{Chunk.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{NamedEntity.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;org.apache.uima.examples"/>
+        <file path="/uima-common/desc/common/nlp/VariantRecognizerAE.xml"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.common{AnnotationUtils.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Location.java"/>
+        <file path="/uima-common/.classpath"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.common{NullProcessAE.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.rs{ReportedSpeechSource.java"/>
+        <file path="/uima-common/desc/common/annotationIndexCleanerAE.xml"/>
+        <file path="/uima-common/INSTALL"/>
+        <file path="/uima-common/desc/common/nlp/InformationRetrievalEvaluatorAE.xml"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;common.types.ne{Event_Type.java"/>
+        <javaElement handleIdentifier="=uima-common/src&lt;fr.univnantes.lina.uima.nlp{VariantRecognizerAE.java"/>
+    </selectedElements>
+</jardesc>
