@@ -49,7 +49,7 @@ def source_map(item):
 
 
 def main():
-    for item in col.find({},fields=['_id','source','meta.source.publisher','meta.original_format']):
+    for item in col.find({},projection=['_id','source','meta.source.publisher','meta.original_format']):
         res = col.update({'_id': item['_id']},{'$set': {'source': source_map(item),'old_source':item['source']}})
         print 'switched item', item['_id'], 'from', item['source'], 'to', source_map(item)
 
