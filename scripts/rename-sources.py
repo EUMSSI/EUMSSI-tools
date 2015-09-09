@@ -35,16 +35,16 @@ def source_map(item):
         print e
     if (new_source == "News"):
         try:
-            new_source = item['meta.source.publisher'].title() # initial cap version of news source
+            new_source = item['meta']['source']['publisher'].title() # initial cap version of news source
         except Exception:
-            pass
+            print e
     if (new_source == "DW ?"):
         try:
-            new_source = 'DW video' if (item['meta.original_format'] == 'DW-video-may-release') else \
-                         'DW article' if item['meta.original_format'] == 'DW-news-may-release' else \
+            new_source = 'DW video' if (item['meta']['original_format'] == 'DW-video-may-release') else \
+                         'DW article' if item['meta']['original_format'] == 'DW-news-may-release' else \
                          new_source
         except Exception:
-            pass
+            print e
     return new_source
 
 
