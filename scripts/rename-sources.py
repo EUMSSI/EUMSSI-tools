@@ -32,25 +32,28 @@ def source_map(item):
     try:
         new_source = mapping[item['source']]
     except Exception as e:
-        print e
+        print 'missing source', e
     if (new_source == "News"):
         try:
             new_source = item['meta']['source']['publisher'].title() # initial cap version of news source
-        except Exception:
-            print e
+        except Exception as e:
+            print 'missing publisher', e
     if (new_source == "DW ?"):
         try:
             new_source = 'DW video' if (item['meta']['original_format'] == 'DW-video-may-release') else \
                          'DW article' if item['meta']['original_format'] == 'DW-news-may-release' else \
                          new_source
-        except Exception:
-            print e
+        except Exception as e:
+            print 'missing original_format', e
     return new_source
 
 
 def main():
-    for item in col.find({},projection=['_id','source','meta.source.publisher','meta.original_format']):
-        res = col.update({'_id': item['_id']},{'$set': {'source': source_map(item),'old_source':item['source']}})
+    for item in col.find({},projection=['_id','source','meta.source.publisher','meta.original_format','old_source']):
+        if ('old_source' in item): # don't overwrite old_source if already set
+            res = col.update({'_id': item['_id']},{'$set': {'source': source_map(item)}})
+        else:
+            res = col.update({'_id': item['_id']},{'$set': {'source': source_map(item),'old_source':item['source']}})
         print 'switched item', item['_id'], 'from', item['source'], 'to', source_map(item)
 
 
